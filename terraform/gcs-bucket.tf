@@ -5,8 +5,4 @@ resource "google_storage_bucket" "eu-data-challenge" {
   public_access_prevention = "enforced"
   uniform_bucket_level_access = true
   force_destroy = true
-
-  retention_policy {
-    retention_period = 2592000
-  }
 }
