@@ -7,6 +7,7 @@ SELECT
   salary_estimate,
   min_salary,
   max_salary,
+  RIGHT(location,2) AS state,
   AVG(min_salary) OVER (
     PARTITION BY RIGHT(location,2)
   ) AS avg_state_min_salary,
