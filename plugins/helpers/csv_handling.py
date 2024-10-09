@@ -3,7 +3,11 @@
 
 import csv
 import json
+import logging
 from dataclasses import dataclass
+
+logger = logging.getLogger('simple_example')
+logger.setLevel(logging.INFO)
 
 
 @dataclass
@@ -30,11 +34,11 @@ class CSVHandler:
                 writer = csv.DictWriter(output_csv_file, reader.fieldnames, delimiter=new_delimiter)
                 writer.writeheader()
                 writer.writerows(reader)
-        print(f"Converting {self.csv_file_path} to {output_file} complete")
+        logger.info(f"Converting {self.csv_file_path} to {output_file} complete")
 
     def csv_to_pretty_json(self, json_file_path):
         """
-        converts a CSV file to pretty json file
+        converts a CSV file to pretty json
             :param json_file_path: file path where the json file should be saved
         """
         data = []
