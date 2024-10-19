@@ -43,11 +43,9 @@ class CSVHandler:
         converts a CSV file to pretty json
             :param json_file_path: file path where the json file should be saved
         """
-        data = []
         with open(self.file_path, 'r', encoding=self.csv_encoding) as csv_file:
             csv_reader = csv.DictReader(csv_file,  delimiter=self.csv_delimiter)
-            for row in csv_reader:
-                data.append(row)
+            data = [row for row in csv_reader]
 
         with open(json_file_path, 'w', encoding='UTF-8') as json_file:
             json.dump(data, json_file, indent=4)
@@ -57,11 +55,9 @@ class CSVHandler:
         converts a CSV file to new json delimited json
             :param json_file_path: file path where the json file should be saved
         """
-        data = []
         with open(self.file_path, 'r', encoding=self.csv_encoding) as csv_file:
             csv_reader = csv.DictReader(csv_file,  delimiter=self.csv_delimiter)
-            for row in csv_reader:
-                data.append(row)
+            data = [row for row in csv_reader]
 
         with open(json_file_path, 'w', encoding='UTF-8') as json_file:
             for record in data:
@@ -92,7 +88,19 @@ class CSVHandler:
 
 # Example usage:
 
+data_engineer_jobs = CSVHandler('/Users/angelina.teneva/Documents/DataEngineer.csv', 'UTF-8', ',')
+data_engineer_jobs.change_csv_delimiters(
+    '/Users/angelina.teneva/Documents/data_engineer_jobs_tabbed.csv',
+    '|'
+)
 
+data_engineer_jobs.csv_to_pretty_json(
+    '/Users/angelina.teneva/Documents/data_engineer_jobs.json'
+)
+
+data_engineer_jobs.csv_to_new_line_delimited_json(
+    '/Users/angelina.teneva/Documents/data_engineer_jobs_new_line_delimited.json'
+)
 
 outbrain = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip', 'UTF-8', ',')
 outbrain.zipped_csv_to_new_line_delimited_json(
