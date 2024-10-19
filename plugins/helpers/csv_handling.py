@@ -68,19 +68,17 @@ class CSVHandler:
                 if len(record) > 0:
                     json_file.write(json.dumps(record) + '\n')
 
-    def convert_zipped_csv_to_new_line_delimited_json(self, file_delimiter, json_local_path):
+    def zipped_csv_to_new_line_delimited_json(self, json_local_path):
         """converts zipped csv files to json new line delimited"""
-        json_data = []
         with ZipFile(self.file_path) as myzip:
             for file in myzip.namelist():
                 if file.endswith('.csv'):
                     with myzip.open(file) as f:
-                        with tempfile.NamedTemporaryFile('w', encoding='utf-8', delete=True):
-                            data = f.read().decode('utf-8', 'ignore').splitlines()
-                            csv_reader = csv.DictReader(data, delimiter=file_delimiter)
+                        with tempfile.NamedTemporaryFile('w', encoding=self.csv_encoding, delete=True):
+                            data = f.read().decode(self.csv_encoding, 'ignore').splitlines()
+                            csv_reader = csv.DictReader(data, delimiter=self.csv_delimiter)
                             logging.info('Constructing a Dictionary started')
-                            for row in csv_reader:
-                                json_data.append(row)
+                            json_data = [row for row in csv_reader]
                 else:
                     raise OSError
 
@@ -89,11 +87,14 @@ class CSVHandler:
             for record in json_data:
                 if len(record) > 0:
                     json_file.write(json.dumps(record) + '\n')
+        logging.info(f'Converted file is {json_local_path}')
 
 
 # Example usage:
-file_specs = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip', 'UTF-8', ',')
-file_specs.convert_zipped_csv_to_new_line_delimited_json(
-    ',',
-    '/Users/angelina.teneva/Documents/outbrain_kaggle.json'
+
+
+
+outbrain = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip', 'UTF-8', ',')
+outbrain.zipped_csv_to_new_line_delimited_json(
+    '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json'
 )
