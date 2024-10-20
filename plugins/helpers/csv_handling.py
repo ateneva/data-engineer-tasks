@@ -72,12 +72,11 @@ class CSVHandler:
                 if file.endswith('.csv'):
                     with myzip.open(file) as f:
                         data = f.read().decode(self.csv_encoding, 'ignore').splitlines()
-                        with tempfile.NamedTemporaryFile('w', encoding=self.csv_encoding, delete=True):
-                            csv_reader = csv.DictReader(data, delimiter=self.csv_delimiter)
-                            print('Constructing a Dictionary started')
-                            json_data = [row for row in csv_reader]
+                        csv_reader = csv.DictReader(data, delimiter=self.csv_delimiter)
+                        print('Started constructing a dictionary object')
+                        json_data = [row for row in csv_reader]
 
-                        print('Conversion to new line delimited json started')
+                        print('Started converting to new line delimited json')
                         with open(json_local_path, 'w', encoding='utf-8') as json_file:
                             for record in json_data:
                                 if len(record) > 0:
