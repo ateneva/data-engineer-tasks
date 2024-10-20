@@ -48,8 +48,8 @@ class CSVHandler:
             csv_reader = csv.DictReader(csv_file,  delimiter=self.csv_delimiter)
             data = [row for row in csv_reader]
 
-        with open(json_file_path, 'w', encoding='UTF-8') as json_file:
-            json.dump(data, json_file, indent=4)
+            with open(json_file_path, 'w', encoding='UTF-8') as json_file:
+                json.dump(data, json_file, indent=4)
 
     def csv_to_new_line_delimited_json(self, json_file_path):
         """
@@ -60,10 +60,10 @@ class CSVHandler:
             csv_reader = csv.DictReader(csv_file,  delimiter=self.csv_delimiter)
             data = [row for row in csv_reader]
 
-        with open(json_file_path, 'w', encoding='UTF-8') as json_file:
-            for record in data:
-                if len(record) > 0:
-                    json_file.write(json.dumps(record) + '\n')
+            with open(json_file_path, 'w', encoding='UTF-8') as json_file:
+                for record in data:
+                    if len(record) > 0:
+                        json_file.write(json.dumps(record) + '\n')
 
     def zipped_csv_to_new_line_delimited_json(self, json_local_path):
         """converts zipped csv files to json new line delimited"""
