@@ -49,7 +49,7 @@ class CSVHandler:
             data = [row for row in csv_reader]
 
             with open(json_file_path, 'w', encoding='UTF-8') as json_file:
-                json.dump(data, json_file, indent=4)
+                json.dump(data, json_file, ensure_ascii=False, indent=4)
 
     def csv_to_new_line_delimited_json(self, json_file_path):
         """
@@ -63,7 +63,7 @@ class CSVHandler:
             with open(json_file_path, 'w', encoding='UTF-8') as json_file:
                 for record in data:
                     if len(record) > 0:
-                        json_file.write(json.dumps(record) + '\n')
+                        json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
 
     def zipped_csv_to_new_line_delimited_json(self, json_local_path):
         """converts zipped csv files to json new line delimited"""
@@ -80,7 +80,7 @@ class CSVHandler:
                         with open(json_local_path, 'w', encoding='utf-8') as json_file:
                             for record in json_data:
                                 if len(record) > 0:
-                                    json_file.write(json.dumps(record) + '\n')
+                                    json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
                         print(f'Converted file is {json_local_path}')
                 else:
                     raise OSError
