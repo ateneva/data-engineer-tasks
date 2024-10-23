@@ -3,7 +3,7 @@
 
 import csv
 import json
-import tempfile
+import gzip
 import logging
 import time
 from datetime import datetime
@@ -26,7 +26,7 @@ class CSVHandler:
     csv_encoding: str
     csv_delimiter: str
 
-    def change_csv_delimiters(self, output_file, new_delimiter):
+    def change_csv_delimiters(self, output_file: str, new_delimiter: str):
         """
         reads a CSV file and writes its content to a new CSV with the wanted delimiter
             :param output_file: full path where the updated file should be saved
@@ -40,7 +40,7 @@ class CSVHandler:
                 writer.writerows(reader)
         logging.info(f"Converting {self.file_path} to {output_file} complete")
 
-    def csv_to_pretty_json(self, json_file_path):
+    def csv_to_pretty_json(self, json_file_path: str):
         """
         converts a CSV file to pretty json
             :param json_file_path: file path where the json file should be saved
@@ -52,7 +52,7 @@ class CSVHandler:
             with open(json_file_path, 'w', encoding='UTF-8') as json_file:
                 json.dump(data, json_file, ensure_ascii=False, indent=4)
 
-    def csv_to_new_line_delimited_json(self, json_file_path):
+    def csv_to_new_line_delimited_json(self, json_file_path: str):
         """
         converts a CSV file to new json delimited json
             :param json_file_path: file path where the json file should be saved
@@ -67,8 +67,11 @@ class CSVHandler:
                     if len(record) > 0:
                         json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
 
-    def zipped_csv_to_new_line_delimited_json(self, json_local_path):
-        """converts zipped csv files to json new line delimited"""
+    def zipped_csv_to_new_line_delimited_json(self, json_file_path: str, compressed=True):
+        """converts zipped csv files to (compressed) json new line delimited
+            :param json_file_path: file path where the json file should be saved
+            :param compressed: if the converted file should be gzip compressed or not
+        """
         with ZipFile(self.file_path) as myzip:
             for file in myzip.namelist():
                 if file.endswith('.csv'):
@@ -79,12 +82,20 @@ class CSVHandler:
                         json_data = [row for row in csv_reader]
 
                         print('Started converting to new line delimited json')
-                        with open(json_local_path, 'w', encoding='utf-8') as json_file:
-                            for record in json_data:
-                                record.update({"_processed_at": f"{datetime.now()}"})
-                                if len(record) > 0:
-                                    json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
-                        print(f'Converted file is {json_local_path}')
+                        if compressed:
+                            with gzip.open(json_file_path + '.gz', 'wb') as json_file:
+                                for record in json_data:
+                                    record.update({"_processed_at": f"{datetime.now()}"})
+                                    record_str = json.dumps(record, ensure_ascii=False)
+                                    if len(record) > 0:
+                                        json_file.write(str.encode(record_str + '\n'))
+                        else:
+                            with open(json_file_path, 'w', encoding='utf-8') as json_file:
+                                for record in json_data:
+                                    record.update({"_processed_at": f"{datetime.now()}"})
+                                    if len(record) > 0:
+                                        json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
+                        print(f'Converted file is {json_file_path}')
                 else:
                     raise OSError
 
@@ -108,7 +119,8 @@ outbrain = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Ka
 
 start_time = time.time()
 outbrain.zipped_csv_to_new_line_delimited_json(
-    '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json'
+    '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json',
+    compressed=True
 )
 end_time = time.time()
 
@@ -116,5 +128,6 @@ print(f'execution time: {end_time-start_time} seconds')
 
 netflix = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_zipped_1000-netflix-shows.zip', 'UTF-8', ',')
 netflix.zipped_csv_to_new_line_delimited_json(
-     '/Users/angelina.teneva/Documents/netflix_shows.json'
+    '/Users/angelina.teneva/Documents/netflix_shows.json',
+    compressed=False
 )
