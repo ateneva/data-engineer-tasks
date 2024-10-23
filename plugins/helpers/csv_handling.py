@@ -6,6 +6,7 @@ import json
 import tempfile
 import logging
 import time
+from datetime import datetime
 from zipfile import ZipFile
 from dataclasses import dataclass
 
@@ -62,6 +63,7 @@ class CSVHandler:
 
             with open(json_file_path, 'w', encoding='UTF-8') as json_file:
                 for record in data:
+                    record.update({"_processed_at": f"{datetime.now()}"})
                     if len(record) > 0:
                         json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
 
@@ -79,6 +81,7 @@ class CSVHandler:
                         print('Started converting to new line delimited json')
                         with open(json_local_path, 'w', encoding='utf-8') as json_file:
                             for record in json_data:
+                                record.update({"_processed_at": f"{datetime.now()}"})
                                 if len(record) > 0:
                                     json_file.write(json.dumps(record, ensure_ascii=False) + '\n')
                         print(f'Converted file is {json_local_path}')
