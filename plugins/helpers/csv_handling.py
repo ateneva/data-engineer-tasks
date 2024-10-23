@@ -40,6 +40,16 @@ class CSVHandler:
                 writer.writerows(reader)
         logging.info(f"Converting {self.file_path} to {output_file} complete")
 
+    def csv_to_gzip(self, gzip_file_path: str):
+        """
+        converts a CSV file to pretty json
+            :param gzip_file_path: file path where the json file should be saved
+        """
+        with open(self.file_path, 'r', encoding=self.csv_encoding) as csv_file:
+            data = csv_file.read()
+            with gzip.open(gzip_file_path, 'wb') as f:
+                f.write(str.encode(data))
+
     def csv_to_pretty_json(self, json_file_path: str):
         """
         converts a CSV file to pretty json
@@ -102,32 +112,29 @@ class CSVHandler:
 # Example usage:
 
 data_engineer_jobs = CSVHandler('/Users/angelina.teneva/Documents/DataEngineer.csv', 'UTF-8', ',')
-data_engineer_jobs.change_csv_delimiters(
-     '/Users/angelina.teneva/Documents/data_engineer_jobs_tabbed.csv',
-     '|'
+data_engineer_jobs.csv_to_gzip(
+     '/Users/angelina.teneva/Documents/data_engineer_jobs.csv.gz'
  )
 
 data_engineer_jobs.csv_to_pretty_json(
-     '/Users/angelina.teneva/Documents/data_engineer_jobs.json'
- )
+      '/Users/angelina.teneva/Documents/data_engineer_jobs.json'
+  )
 
 data_engineer_jobs.csv_to_new_line_delimited_json(
-     '/Users/angelina.teneva/Documents/data_engineer_jobs_new_line_delimited.json'
- )
+      '/Users/angelina.teneva/Documents/data_engineer_jobs_new_line_delimited.json'
+  )
 
-outbrain = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip', 'UTF-8', ',')
-
-start_time = time.time()
+outbrain = CSVHandler(
+    '/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip',
+    'UTF-8', ',')
 outbrain.zipped_csv_to_new_line_delimited_json(
-    '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json',
-    compressed=True
+     '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json',
+     compressed=True
 )
-end_time = time.time()
 
-print(f'execution time: {end_time-start_time} seconds')
-
-netflix = CSVHandler('/Users/angelina.teneva/Downloads/gcp_datasets_zipped_1000-netflix-shows.zip', 'UTF-8', ',')
+netflix = CSVHandler(
+    '/Users/angelina.teneva/Downloads/gcp_datasets_zipped_1000-netflix-shows.zip', 'UTF-8', ',')
 netflix.zipped_csv_to_new_line_delimited_json(
-    '/Users/angelina.teneva/Documents/netflix_shows.json',
-    compressed=False
+     '/Users/angelina.teneva/Documents/netflix_shows.json',
+     compressed=False
 )
