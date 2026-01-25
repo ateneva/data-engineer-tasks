@@ -109,32 +109,32 @@ class CSVHandler:
                 else:
                     raise OSError
 
-# Example usage:
+# # Example usage:
 
-data_engineer_jobs = CSVHandler('/Users/angelina.teneva/Documents/DataEngineer.csv', 'UTF-8', ',')
-data_engineer_jobs.csv_to_gzip(
-     '/Users/angelina.teneva/Documents/data_engineer_jobs.csv.gz'
- )
+# data_engineer_jobs = CSVHandler('/Users/angelina.teneva/Documents/DataEngineer.csv', 'UTF-8', ',')
+# data_engineer_jobs.csv_to_gzip(
+#      '/Users/angelina.teneva/Documents/data_engineer_jobs.csv.gz'
+#  )
 
-data_engineer_jobs.csv_to_pretty_json(
-      '/Users/angelina.teneva/Documents/data_engineer_jobs.json'
-  )
+# data_engineer_jobs.csv_to_pretty_json(
+#       '/Users/angelina.teneva/Documents/data_engineer_jobs.json'
+#   )
 
-data_engineer_jobs.csv_to_new_line_delimited_json(
-      '/Users/angelina.teneva/Documents/data_engineer_jobs_new_line_delimited.json'
-  )
+# data_engineer_jobs.csv_to_new_line_delimited_json(
+#       '/Users/angelina.teneva/Documents/data_engineer_jobs_new_line_delimited.json'
+#   )
 
-outbrain = CSVHandler(
-    '/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip',
-    'UTF-8', ',')
-outbrain.zipped_csv_to_new_line_delimited_json(
-     '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json',
-     compressed=True
-)
+# outbrain = CSVHandler(
+#     '/Users/angelina.teneva/Downloads/gcp_datasets_Outbrain Kaggle Competition_page_views_sample.csv.zip',
+#     'UTF-8', ',')
+# outbrain.zipped_csv_to_new_line_delimited_json(
+#      '/Users/angelina.teneva/Documents/outbrain_comprehension_kaggle.json',
+#      compressed=True
+# )
 
-netflix = CSVHandler(
-    '/Users/angelina.teneva/Downloads/gcp_datasets_zipped_1000-netflix-shows.zip', 'UTF-8', ',')
-netflix.zipped_csv_to_new_line_delimited_json(
-     '/Users/angelina.teneva/Documents/netflix_shows.json',
-     compressed=False
-)
+# netflix = CSVHandler(
+#     '/Users/angelina.teneva/Downloads/gcp_datasets_zipped_1000-netflix-shows.zip', 'UTF-8', ',')
+# netflix.zipped_csv_to_new_line_delimited_json(
+#      '/Users/angelina.teneva/Documents/netflix_shows.json',
+#      compressed=False
+# )
