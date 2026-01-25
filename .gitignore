@@ -1,3 +1,4 @@
 .user.yml
 logs
 .vscode
+__pycache__
