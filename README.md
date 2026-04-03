@@ -33,3 +33,13 @@ Pre-commit have been set up in this repo to check and fix for:
 - trailing whitespaces
 - violations of sql standards
 - errors in yaml syntax
+
+Hence, when working with the repo, make sure you've got the pre-commit installed so that they run upon your every commit
+
+```bash
+# install the githook scripts
+pre-commit install
+
+# run against all existing files
+pre-commit run --all-files
+```
