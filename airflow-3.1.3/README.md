@@ -21,10 +21,6 @@
 ## Set up virtual environment with the correct python version & activate it
 
 ```bash
-# 2.9.3
-python3.11 -m venv airflow-2.9.3
-source airflow-2.9.3/bin/activate
-
 # 3.1.3
 python3.12 -m venv airflow-3.1.1
 source airflow-3.1.1/bin/activate
@@ -33,9 +29,6 @@ source airflow-3.1.1/bin/activate
 ## Fetch `docker-compose.yaml` from the official docs
 
 ```bash
-# 2.9.3
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.3/docker-compose.yaml'
-
 # 3.1.3
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.1.3/docker-compose.yaml'
 ```
@@ -105,7 +98,5 @@ docker compose --file docker-compose.yml down
 ---
 
 ## References
-
-- [Airflow 2.9.3](https://airflow.apache.org/docs/apache-airflow/2.9.3/howto/docker-compose/index.html)
 
 - [Airflow 3.1.3](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
