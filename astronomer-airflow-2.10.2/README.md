@@ -1,5 +1,17 @@
 # Spinning up Airflow Astronomer
 
+<!-- markdownlint-disable MD007-->
+
+<!-- TOC -->
+
+- [Spinning up Airflow Astronomer](#spinning-up-airflow-astronomer)
+    - [Pre-requisites](#pre-requisites)
+        - [setup virual environment & activate it](#setup-virual-environment--activate-it)
+        - [install astro cli](#install-astro-cli)
+    - [Starting your local instance](#starting-your-local-instance)
+
+<!-- /TOC -->
+
 ## Pre-requisites
 
 ### setup virual environment & activate it
