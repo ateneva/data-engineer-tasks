@@ -1,6 +1,46 @@
 
 # Setting Up
 
+<!-- markdownlint-disable MD007 -->
+
+<!-- TOC -->
+
+- [Setting Up](#setting-up)
+    - [Review GIT configuration](#review-git-configuration)
+        - [Configure GIT](#configure-git)
+        - [Add .gitignore file](#add-gitignore-file)
+        - [Clone a remote repository](#clone-a-remote-repository)
+        - [Create local repository](#create-local-repository)
+        - [Add local repository as a remote](#add-local-repository-as-a-remote)
+        - [Rename/Remove remote repository](#renameremove-remote-repository)
+        - [Change local repo default tracking branch](#change-local-repo-default-tracking-branch)
+- [Daily Usage](#daily-usage)
+    - [Branches](#branches)
+        - [review remote repository commit history](#review-remote-repository-commit-history)
+        - [create a new branch](#create-a-new-branch)
+        - [review existing branches](#review-existing-branches)
+        - [merge branches](#merge-branches)
+        - [squash merge](#squash-merge)
+        - [merge conflicts](#merge-conflicts)
+        - [delete branches](#delete-branches)
+    - [Committing](#committing)
+        - [check local repository status](#check-local-repository-status)
+        - [show current commit](#show-current-commit)
+        - [show commits difference between two branches](#show-commits-difference-between-two-branches)
+        - [stage & commit files](#stage--commit-files)
+        - [amend a commit message](#amend-a-commit-message)
+        - [push force](#push-force)
+        - [discard local changes](#discard-local-changes)
+        - [unstage files](#unstage-files)
+        - [stash local changes](#stash-local-changes)
+- [Advanced Tips](#advanced-tips)
+    - [Merging vs. Rebasing](#merging-vs-rebasing)
+        - [note the difference in flags between git merge and git rebase](#note-the-difference-in-flags-between-git-merge-and-git-rebase)
+    - [Resetting & Reverting](#resetting--reverting)
+    - [Cherry picking](#cherry-picking)
+
+<!-- /TOC -->
+
 ## Review GIT configuration
 
 ```bash
@@ -33,15 +73,15 @@ git config --global pull.ff only       # fast-forward only
 
 **PRO:**
 
-* <https://sdqweb.ipd.kit.edu/wiki/Git_pull_--rebase_vs._--merge>
+- <https://sdqweb.ipd.kit.edu/wiki/Git_pull_--rebase_vs._--merge>
 
-* <https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase>
+- <https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase>
 
-* <https://spin.atomicobject.com/2020/05/05/git-configurations-default/>
+- <https://spin.atomicobject.com/2020/05/05/git-configurations-default/>
 
 **CON:**
 
-* <https://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase>
+- <https://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase>
 
 ### Add `.gitignore` file
 
@@ -98,7 +138,7 @@ git remote rename <old> <new>
 git remote remove <name>
 ```
 
-* <https://www.git-tower.com/learn/git/faq/set-upstream/>
+- <https://www.git-tower.com/learn/git/faq/set-upstream/>
 
 ### Change local repo default tracking branch
 
@@ -107,6 +147,8 @@ git branch -m master main       # move from master to main
 git fetch origin
 git branch -u origin/main main  # set up tracking to main
 ```
+
+<!-- markdownlint-disable MD025 -->
 
 # Daily Usage
 
@@ -164,7 +206,7 @@ git merge <branch> --no-ff     # merge commit
 git merge <branch> --ff-only   # abort merge if fast-forward not possible
 ```
 
-* <https://www.atlassian.com/git/tutorials/using-branches/git-merge>
+- <https://www.atlassian.com/git/tutorials/using-branches/git-merge>
 
 ### squash merge
 
@@ -202,7 +244,7 @@ git push origin --delete <branch_name>  # delete the remote branch
 git remote prune origin                 # remove local tracking branches that have been deleted on the remote
 ```
 
-* <https://stackoverflow.com/questions/7726949/remove-tracking-branches-no-longer-on-remote>
+- <https://stackoverflow.com/questions/7726949/remove-tracking-branches-no-longer-on-remote>
 
 ## Committing
 
@@ -265,15 +307,15 @@ git rebase --continue
 
 If the commit has already been pushed then you will need to force push after amending
 
-* <https://stackoverflow.com/questions/179123/how-to-modify-existing-unpushed-commit-messages>
+- <https://stackoverflow.com/questions/179123/how-to-modify-existing-unpushed-commit-messages>
 
-* <https://www.git-tower.com/learn/git/faq/change-author-name-email>
-* <https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history>
-* <https://stackoverflow.com/questions/30194796/git-rebase-whats-the-difference-between-edit-and-reword>
+- <https://www.git-tower.com/learn/git/faq/change-author-name-email>
+- <https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history>
+- <https://stackoverflow.com/questions/30194796/git-rebase-whats-the-difference-between-edit-and-reword>
 
 ### push force
 
-* needed to sync your remote branch after rebasing local branch
+- needed to sync your remote branch after rebasing local branch
 
 ```bash
 git push origin <branch> -f
@@ -281,11 +323,11 @@ git push origin <branch> --force
 git push <remote> <branch> -f
 ```
 
-* <https://stackoverflow.com/questions/43567577/what-is-the-different-between-force-push-and-normal-push-in-git>#
+- <https://stackoverflow.com/questions/43567577/what-is-the-different-between-force-push-and-normal-push-in-git>#
 
-* <https://stackoverflow.com/questions/5509543/how-do-i-properly-force-a-git-push>
+- <https://stackoverflow.com/questions/5509543/how-do-i-properly-force-a-git-push>
 
-* <https://stackoverflow.com/questions/34995726/why-when-should-one-ever-force-push>
+- <https://stackoverflow.com/questions/34995726/why-when-should-one-ever-force-push>
 
 ### discard local changes
 
@@ -353,16 +395,16 @@ First, it eliminates the unnecessary merge commits required by git merge
 Second, rebasing also results in a perfectly linear project history
     —you can follow the tip of feature all the way to the beginning of the project without any forks.
 
-* It can be harmful to do it in shared branches.
-* It can cause complex and hard to resolve merge conflicts.
+- It can be harmful to do it in shared branches.
+- It can cause complex and hard to resolve merge conflicts.
 In these cases, instead of rebasing your branch against the default branch,
 consider pulling it instead (git pull origin master).
 
-* It has a similar effect without compromising the work of your contributors.
+- It has a similar effect without compromising the work of your contributors.
 
-* So, before you run git rebase, always ask yourself, “Is anyone else looking at this branch?”
-  * If the answer is yes, take your hands off the keyboard and start thinking about a non-destructive way to make your changes
-    * (e.g., the `git revert` command). Otherwise, you’re safe to re-write history as much as you like.
+- So, before you run git rebase, always ask yourself, “Is anyone else looking at this branch?”
+  - If the answer is yes, take your hands off the keyboard and start thinking about a non-destructive way to make your changes
+    - (e.g., the `git revert` command). Otherwise, you’re safe to re-write history as much as you like.
 
 ```bash
 git fetch origin main
@@ -392,26 +434,26 @@ If you try to push the rebased main branch back to a remote repository,
     Git will prevent you from doing so because it conflicts with the remote main branch.
 But, you can force the push to go through by passing the --force flag, like so:
 
-* <https://www.atlassian.com/git/tutorials/merging-vs-rebasing>
+- <https://www.atlassian.com/git/tutorials/merging-vs-rebasing>
 
-* <https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase>
+- <https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase>
 
-* <https://docs.gitlab.com/ee/topics/git/git_rebase.html>
+- <https://docs.gitlab.com/ee/topics/git/git_rebase.html>
 
-* <https://medium.com/osedea/git-rebase-powerful-command-507bbac4a234>
+- <https://medium.com/osedea/git-rebase-powerful-command-507bbac4a234>
 
-* <https://stackoverflow.com/questions/52625081/git-pull-another-remote-branch-into-my-local-branch>
+- <https://stackoverflow.com/questions/52625081/git-pull-another-remote-branch-into-my-local-branch>
 
-* <https://howchoo.com/git/git-merge-conflicts-rebase-ours-theirs#using-ours-theirs-during-a-rebase>
+- <https://howchoo.com/git/git-merge-conflicts-rebase-ours-theirs#using-ours-theirs-during-a-rebase>
 
 ## Resetting & Reverting
 
 You can also think of:
 
-* git revert as a tool for undoing committed changes,
-* git reset HEAD is for undoing uncommitted changes.
+- git revert as a tool for undoing committed changes,
+- git reset HEAD is for undoing uncommitted changes.
 
-* `commit level`
+- `commit level`
 
 ```bash
 git reset HEAD          # reset local branch to the latest commit
@@ -426,23 +468,23 @@ git revert -n <commit SHA>
 git revert --no-commit <commit SHA>
 ```
 
-* `file level`
+- `file level`
 
 ```bash
 git reset       # unstage a file
 git checkout    # discard chnages in the working directory
 ```
 
-* <https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting>
+- <https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting>
 
 ## Cherry picking
 
 `git cherry-pick` is a powerful command that enables arbitrary Git commits to be picked by reference and appended to the current working HEAD
 
-* Bug hotfixes
+- Bug hotfixes
 When a bug is discovered it is important to deliver a fix to end users as quickly as possible.
 
-* Undoing changes and restoring lost commits
+- Undoing changes and restoring lost commits
 Sometimes a feature branch may go stale and not get merged into main.
 Sometimes a pull request might get closed without merging.
 Git never loses those commits and through commands like git log and git reflog they can be found and cherry picked back to life.
@@ -457,4 +499,4 @@ git cherry-pick -n <commit SHA>
 git cherry-pick --no commit <commit SHA>
 ```
 
-* <https://www.atlassian.com/git/tutorials/cherry-pick>
+- <https://www.atlassian.com/git/tutorials/cherry-pick>

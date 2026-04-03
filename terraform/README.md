@@ -1,5 +1,25 @@
 # Terraform
 
+<!-- markdownlint-disable MD007 -->
+
+<!-- TOC -->
+
+- [Terraform](#terraform)
+    - [What is Terraform?](#what-is-terraform)
+    - [Why is Infrastrcture as code important?](#why-is-infrastrcture-as-code-important)
+    - [Setting up Terraform](#setting-up-terraform)
+    - [What happens if resource already exists](#what-happens-if-resource-already-exists)
+    - [Using the terraform import Command CLI](#using-the-terraform-import-command-cli)
+        - [Step 1: Define the Resource Block](#step-1-define-the-resource-block)
+        - [Step 2: Run the Import Command](#step-2-run-the-import-command)
+        - [Step 3: Verify the State](#step-3-verify-the-state)
+    - [Using the import Block HCL - Terraform 1.5+](#using-the-import-block-hcl---terraform-15)
+        - [Step 1: Define the Resource and the Import Block](#step-1-define-the-resource-and-the-import-block)
+        - [Step 2: Run terraform apply](#step-2-run-terraform-apply)
+    - [USEFUL CLI](#useful-cli)
+
+<!-- /TOC -->
+
 ## What is Terraform?
 
 Terraform is a tool that allows us to build infrastructure as code
@@ -37,7 +57,7 @@ There are two primary ways to achieve this: using the **`terraform import` comma
 
 -----
 
-## 1\. Using the `terraform import` Command (CLI)
+## Using the `terraform import` Command (CLI)
 
 This is the traditional, one-time command approach.
 
@@ -58,8 +78,8 @@ resource "google_storage_bucket" "example_bucket" {
 
 Use the `terraform import` command with the resource address and the unique ID of the live resource.
 
-  - **Resource Address:** `google_storage_bucket.example_bucket` (Type and Local Name)
-  - **Resource ID:** The unique **bucket name** (`my-existing-gcs-bucket-name`).
+- **Resource Address:** `google_storage_bucket.example_bucket` (Type and Local Name)
+- **Resource ID:** The unique **bucket name** (`my-existing-gcs-bucket-name`).
 
 <!-- end list -->
 
@@ -83,7 +103,7 @@ If the plan shows **"No changes. Your infrastructure matches the configuration,"
 
 -----
 
-## 2\. Using the `import` Block (HCL - Terraform 1.5+)
+## Using the `import` Block (HCL - Terraform 1.5+)
 
 The `import` block allows you to specify the resource to be imported directly in your HCL code, and the import is executed when you run `terraform plan` or `terraform apply`.
 
@@ -121,7 +141,7 @@ The video below explains how to import existing infrastructure to Terraform.
 
 ## USEFUL CLI
 
- - `download and install any provider binary for the providers to use within the configuration`
+- `download and install any provider binary for the providers to use within the configuration`
 
 ```bash
 terraform init

@@ -1,4 +1,30 @@
 
+# Docker
+
+<!-- markdownlint-disable MD007 -->
+
+<!-- TOC -->
+
+- [Docker](#docker)
+- [Images](#images)
+    - [Pulling image from DockerHub](#pulling-image-from-dockerhub)
+    - [Building images](#building-images)
+        - [creating image from a container](#creating-image-from-a-container)
+    - [Pushing image to DockerHub](#pushing-image-to-dockerhub)
+        - [Pushing image to Container Registry GCP](#pushing-image-to-container-registry-gcp)
+        - [Pushing image to ECS AWS](#pushing-image-to-ecs-aws)
+    - [Removing Tags](#removing-tags)
+- [Containers](#containers)
+    - [Building Re-creating containers](#building-re-creating-containers)
+        - [copy all files from a local folder to existing container](#copy-all-files-from-a-local-folder-to-existing-container)
+        - [Execute a command on a running container](#execute-a-command-on-a-running-container)
+        - [handy container commands](#handy-container-commands)
+- [References](#references)
+
+<!-- /TOC -->
+
+<!-- markdownlint-disable MD025 -->
+
 # Images
 
 ```bash
@@ -143,6 +169,8 @@ docker/getting-started      latest    157095baba98   6 months ago   27.4MB
 angelina.teneva@Angelinas-MacBook-Pro mysql % 
 ```
 
+<!-- markdownlint-disable MD025 -->
+
 # Containers
 
 ```bash
@@ -164,9 +192,9 @@ docker container run -p 8888:8888 olympics
 docker container run -it -v "%cd%": /data dev-env bash 
 ```
 
-* <https://docs.docker.com/engine/reference/commandline/container_rm/>
+- <https://docs.docker.com/engine/reference/commandline/container_rm/>
 
-* <https://docs.docker.com/engine/reference/commandline/container_run/>
+- <https://docs.docker.com/engine/reference/commandline/container_run/>
 
 ## Building (Re-creating) containers
 
@@ -175,11 +203,11 @@ docker-compose -f docker-compose.yml up
 docker-compose -f docker-compose.yml up --force-recreate
 ```
 
-* <https://docs.docker.com/compose/reference/up/>
+- <https://docs.docker.com/compose/reference/up/>
 
-* <https://stackoverflow.com/questions/52106464/what-is-the-difference-between-the-build-and-force-recreate-flags-to-do>
+- <https://stackoverflow.com/questions/52106464/what-is-the-difference-between-the-build-and-force-recreate-flags-to-do>
 
-* <https://stackoverflow.com/questions/47081505/docker-compose-force-recreate-specific-service>
+- <https://stackoverflow.com/questions/47081505/docker-compose-force-recreate-specific-service>
 
 ### copy all files from a local folder to existing container
 
@@ -192,7 +220,7 @@ docker cp <local path>. <container name>:/<folder on container>/
 docker cp /Users/angelina.teneva/Documents/postgres/sample_db/. postgres_dvd_rental_1/:/home/
 ```
 
-* <https://stackoverflow.com/questions/32566624/docker-cp-all-files-from-a-folder-to-existing-container-folder>
+- <https://stackoverflow.com/questions/32566624/docker-cp-all-files-from-a-folder-to-existing-container-folder>
 
 ### Execute a command on a running container
 
@@ -212,10 +240,10 @@ docker exec -it ubuntu_bash bash
 
 [**Note:**](https://stackoverflow.com/questions/27673563/how-to-get-into-psql-of-a-running-postgres-container)
 
-* `docker exec` runs the command on a running container
-* `docker run` will start a new container.
+- `docker exec` runs the command on a running container
+- `docker run` will start a new container.
 
-* <https://docs.docker.com/engine/reference/commandline/exec/>
+- <https://docs.docker.com/engine/reference/commandline/exec/>
 
 ### handy container commands
 
