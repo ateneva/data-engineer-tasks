@@ -1,6 +1,6 @@
-CREATE OR REPLACE VIEW `data-geeking-gcp.the_data_challenge.salary` 
+CREATE OR REPLACE VIEW `data-geeking-gcp.the_data_challenge.salary`
 AS
-SELECT 
+SELECT
   job_title,
   job_description,
   salary_estimate,
@@ -17,4 +17,4 @@ SELECT
   sector,
   revenue,
   easy_apply
-FROM `data-geeking-gcp.the_data_challenge.data_engineer_jobs` 
+FROM `data-geeking-gcp.the_data_challenge.data_engineer_jobs`

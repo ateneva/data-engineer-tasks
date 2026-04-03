@@ -47,7 +47,7 @@ docker pull apache/airflow:2.9.3-python3.11
 ## Building images
 
 ```bash
-docker build -t <image name> .            # create the image 
+docker build -t <image name> .            # create the image
 ```
 
 ### [creating image from a container](https://www.dataset.com/blog/create-docker-image/)
@@ -57,10 +57,10 @@ docker build -t <image name> .            # create the image
 docker commit <container name>
 docker commit mysql_dvd_rental_1
 
-# check images 
+# check images
 docker image ls
 
-# tag the newly-created image 
+# tag the newly-created image
 docker tag <image id> <tag name>
 docker tag 6857a570e647 mysql-dvd
 ```
@@ -76,7 +76,7 @@ mysql                    latest    262f364f4f01   9 days ago       546MB
 adminer                  latest    f0aa9b7b3eec   2 weeks ago      80.8MB
 mysql/mysql-server       latest    e588e8734686   2 months ago     471MB
 docker/getting-started   latest    157095baba98   6 months ago     27.4MB
-angelina.teneva@Angelinas-MacBook-Pro mysql % 
+angelina.teneva@Angelinas-MacBook-Pro mysql %
 
 angelina.teneva@Angelinas-MacBook-Pro mysql % docker image ls
 REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
@@ -86,7 +86,7 @@ mysql                    latest    262f364f4f01   9 days ago      546MB
 adminer                  latest    f0aa9b7b3eec   2 weeks ago     80.8MB
 mysql/mysql-server       latest    e588e8734686   2 months ago    471MB
 docker/getting-started   latest    157095baba98   6 months ago    27.4MB
-angelina.teneva@Angelinas-MacBook-Pro mysql % 
+angelina.teneva@Angelinas-MacBook-Pro mysql %
 ```
 
 ```bash
@@ -166,7 +166,7 @@ mysql                       latest    262f364f4f01   2 weeks ago    546MB
 adminer                     latest    f0aa9b7b3eec   3 weeks ago    80.8MB
 mysql/mysql-server          latest    e588e8734686   3 months ago   471MB
 docker/getting-started      latest    157095baba98   6 months ago   27.4MB
-angelina.teneva@Angelinas-MacBook-Pro mysql % 
+angelina.teneva@Angelinas-MacBook-Pro mysql %
 ```
 
 <!-- markdownlint-disable MD025 -->
@@ -186,10 +186,10 @@ docker container run -it <image name>     # run the image and interact with it
 docker container run olympics
 
 # run the olympics image on a a specific port
-docker container run -p 8888:8888 olympics  
+docker container run -p 8888:8888 olympics
 
 # run the image called `bash` by using
-docker container run -it -v "%cd%": /data dev-env bash 
+docker container run -it -v "%cd%": /data dev-env bash
 ```
 
 - <https://docs.docker.com/engine/reference/commandline/container_rm/>
@@ -226,16 +226,16 @@ docker cp /Users/angelina.teneva/Documents/postgres/sample_db/. postgres_dvd_ren
 
 ```bash
 #start the container
-docker run --name ubuntu_bash --rm -i -t ubuntu bash       
+docker run --name ubuntu_bash --rm -i -t ubuntu bash
 
 # make files from host machine available on container
-docker run -v /host_dir:/container_dir ...                 
+docker run -v /host_dir:/container_dir ...
 
 ### execute a command on a running container
-docker exec -d ubuntu_bash touch /tmp/execWorks            
+docker exec -d ubuntu_bash touch /tmp/execWorks
 
 ### execute an interactive command
-docker exec -it ubuntu_bash bash                           
+docker exec -it ubuntu_bash bash
 ```
 
 [**Note:**](https://stackoverflow.com/questions/27673563/how-to-get-into-psql-of-a-running-postgres-container)

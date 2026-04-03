@@ -84,10 +84,10 @@ Use the `terraform import` command with the resource address and the unique ID o
 <!-- end list -->
 
 ```bash
-# generic example 
+# generic example
 terraform import google_storage_bucket.example_bucket my-existing-gcs-bucket-name
 
-# specific example 
+# specific example
 terraform import google_storage_bucket.eu-data-challenge eu-data-challenge
 ```
 

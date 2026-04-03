@@ -1,6 +1,6 @@
-CREATE OR REPLACE VIEW `data-geeking-gcp.the_data_challenge.comparison` 
+CREATE OR REPLACE VIEW `data-geeking-gcp.the_data_challenge.comparison`
 AS
-SELECT 
+SELECT
   s.state,
   AVG(s.avg_state_min_salary)                                     AS avg_min_salary,
   AVG(median_household_income_2019)                               AS median_household_income_2019,

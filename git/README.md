@@ -215,7 +215,7 @@ git merge <branch> --ff-only   # abort merge if fast-forward not possible
 # it only works if the original branch is deleted
 
 git checkout master
-git merge --squash featureX --ff  
+git merge --squash featureX --ff
 git commit -m "merge featureX into development"
 git push origin development
 git push -d origin featureX
@@ -417,9 +417,9 @@ git add .
 git commit -m "sync with development"
 git rebase --continue                 # finish rebasing after selecting the changes
 
-# redo your changes and add them with 
+# redo your changes and add them with
 git add .
-git commit -m <messsage> 
+git commit -m <messsage>
 git push origin my-feature-branch -f  # a rebased branch needs force-pushing
 ```
 
