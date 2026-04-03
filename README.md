@@ -7,6 +7,7 @@
 - [Enforcing Code Quality](#enforcing-code-quality)
     - [YAML Linting](#yaml-linting)
     - [pre-commit hooks](#pre-commit-hooks)
+    - [Pylint for python linting](#pylint-for-python-linting)
 
 <!-- /TOC -->
 
@@ -42,4 +43,17 @@ pre-commit install
 
 # run against all existing files
 pre-commit run --all-files
+```
+
+## [Pylint for python linting](https://pylint.readthedocs.io/en/latest/)
+
+```bash
+# lint a specific file
+pylint my_file.py
+
+# lint all Python files in the current directory
+pylint .
+
+# lint with a custom configuration file
+pylint --rcfile=.pylintrc my_file.py
 ```
