@@ -6,3 +6,9 @@ repos:
       - id: trailing-whitespace
       - id: check-yaml
         include: \.(yaml|yml)$
+
+  - repo: https://github.com/pycqa/pylint
+    rev: v3.0.0a5
+    hooks:
+      - id: pylint
+        files: \.py$
