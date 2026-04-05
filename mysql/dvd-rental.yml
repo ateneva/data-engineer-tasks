@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  dvd_rental:
+    image: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports: 
+      - "3306:3306"
+    hostname: '%'
+    environment:
+      MYSQL_ROOT_PASSWORD: rentals
+      MYSQL_USER: ateneva
+      MYSQL_PASSWORD: ateneva_rentals
+      MYSQL_DATABASE: dvd
+      DATA: /var/lib/mysql
+    volumes: 
+      - /var/lib/mysql
