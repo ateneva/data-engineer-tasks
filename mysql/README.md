@@ -70,6 +70,8 @@ services:
 docker-compose -f dvd-rental.yml up
 ```
 
+This will create an empty `mysql` instance, which you can use to start setting up databases
+
 - verify the container is running
 
 ```bash
@@ -81,6 +83,8 @@ docker container ls -a
 ## Loading `sample mysql` databases
 
 ### dvd_rental
+
+Once, you've set up your `mysql` instance, you can load the sample `dvd_rental` database by executing the SQL commands available in `sql/dvd-rental-sample-db` folder of this repo
 
 ### sakila
 

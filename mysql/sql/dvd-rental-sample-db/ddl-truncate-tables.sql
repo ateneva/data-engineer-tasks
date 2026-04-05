@@ -1,0 +1,27 @@
+-- Sakila Sample Database Schema
+-- Version 1.3
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE actor;
+TRUNCATE TABLE address;
+TRUNCATE TABLE category;
+TRUNCATE TABLE city;
+TRUNCATE TABLE country;
+TRUNCATE TABLE customer;
+
+TRUNCATE TABLE film;
+TRUNCATE TABLE film_actor;
+TRUNCATE TABLE film_category;
+TRUNCATE TABLE film_text;
+TRUNCATE TABLE language;
+
+
+TRUNCATE TABLE store;
+TRUNCATE TABLE inventory;
+TRUNCATE TABLE staff;
+TRUNCATE TABLE rental;
+TRUNCATE TABLE payment;
+
+SET FOREIGN_KEY_CHECKS = 1;
